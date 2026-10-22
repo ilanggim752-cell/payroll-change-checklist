@@ -99,6 +99,15 @@ body{background:#f6f8fa;color:#172b21;padding:30px 22px}
 .type-body{grid-template-columns:minmax(225px,.84fr) minmax(280px,1.16fr)}
 @media(max-width:1120px){.layout{grid-template-columns:minmax(275px,320px) minmax(0,1fr)}.type-body{grid-template-columns:1fr}}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.type-body{grid-template-columns:1fr}}
+
+
+/* 엑셀 업로드 영역만 강조: 붉은 점선 및 연한 주황 배경 */
+.import-first{border:3px dashed #d44238 !important;background:#fff3e8 !important;box-shadow:0 0 0 5px rgba(212,66,56,.07),0 8px 24px rgba(105,51,31,.08) !important}
+.import-first>h2:first-child{color:#9f251d !important;font-weight:900 !important}
+.import-first #dropZone{border:3px dashed #c9322b !important;background:#ffe1cc !important;color:#74241f !important;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);padding:27px 15px !important;transition:background .15s,border-color .15s !important}
+.import-first #dropZone strong{color:#8f251c !important;font-weight:900 !important}
+.import-first #dropZone small{color:#805049 !important}
+.import-first #dropZone:hover,.import-first #dropZone:focus-visible,.import-first #dropZone.drag{background:#ffceb0 !important;border-color:#ac201a !important}
 </style><script>/*!
 
 JSZip v3.10.1 - A JavaScript class for generating and reading zip files
@@ -542,8 +551,69 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .hero{background-position:center center!important}
 .annual-alerts{background-position:center center!important}
 }
+
+/* 앱 본래의 밝은 그린/화이트 팔레트에 맞춘 업무 인덱스 */
+.workflow-sidebar{position:fixed;left:0;top:0;bottom:0;width:235px;z-index:50;background:linear-gradient(165deg,#eef7ee 0%,#f9fcf9 57%,#e6f1e8 100%);color:#244c34;display:flex;flex-direction:column;padding:31px 16px;box-shadow:4px 0 24px #24442c13;border-right:1px solid #cfe3d3;overflow-y:auto}
+.sidebar-brand{display:flex;align-items:center;gap:12px;margin:5px 3px 40px}
+.sidebar-brand-icon{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border-radius:12px;background:#287447;color:#fff;font-size:25px}
+.sidebar-brand strong{display:block;color:#204e36;font-size:16px;line-height:1.4}
+.sidebar-brand small{display:block;color:#708b78;font-size:11px;margin-top:4px}
+.sidebar-heading{font-size:11px;letter-spacing:2px;color:#5d8f6d;margin:0 10px 14px;font-weight:800}
+.workflow-link{display:flex;align-items:center;gap:13px;min-height:51px;border:1px solid transparent;border-radius:11px;padding:11px 12px;color:#365f45;text-decoration:none;font-size:13px;font-weight:750;margin:2px 0;transition:background .15s,color .15s,border-color .15s}
+.workflow-link span{font-size:12px;color:#287447;font-weight:850}
+.workflow-link:hover,.workflow-link:focus-visible{background:#e2f1e6;color:#1d633c;border-color:#bddcc6}
+.workflow-link.active{background:#d5eadb;color:#1e603c;border-color:#a8cdb2;box-shadow:inset 3px 0 #287447}
+.sidebar-hint{font-size:11px;color:#789582;line-height:1.6;margin:auto 9px 3px;padding-top:25px}
+body{padding-left:250px}
+body>.shell{width:100%;max-width:1510px}
+#section-import,#section-search,#section-annual,#listCard{scroll-margin-top:25px}
+@media(max-width:1100px){.workflow-sidebar{width:190px;padding:23px 10px}.sidebar-brand{gap:8px}.sidebar-brand strong{font-size:13px}.workflow-link{font-size:12px;gap:9px}body{padding-left:200px}}
+@media(max-width:760px){.workflow-sidebar{position:relative;width:auto;max-width:none;bottom:auto;left:auto;top:auto;display:block;padding:13px 12px;margin:-16px -10px 15px;overflow:visible;border-right:none;border-bottom:1px solid #cfe3d3}.sidebar-brand{display:none}.sidebar-heading{margin:0 3px 9px}.workflow-sidebar .workflow-link{display:inline-flex;min-height:39px;padding:8px 10px;margin:3px;font-size:11px;white-space:nowrap}.sidebar-hint{display:none}body{padding-left:10px}}
 </style>
-</head><body><main class="shell"><header class="hero"><div><div class="kicker">인사변동별 확인사항 · 브라우저 내 처리</div><h1>급여변동사항 누락 방지 도우미</h1><p>엑셀을 끌어놓으면 직원별 확인사항을 자동으로 정리합니다.</p></div></header><section class="annual-alerts" aria-label="연간 공통 급여변동 주의사항"><div class="annual-title">정기 급여변동 주의사항 <span>4월 · 5월</span></div><div class="annual-grid"><div class="annual-item" data-month="4"><strong>4월 · 건강보험료 정산</strong><p>건강보험료 연말정산 결과 및 건강보험·장기요양보험료 급여 공제 반영 여부 확인</p></div><div class="annual-item" data-month="5"><strong>5월 · 공무원연금 기여금</strong><p>기준소득월액 변경에 따른 일반기여금 변동과 해당자 소급기여금 반영 여부 확인</p></div></div><p class="annual-foot">※ 실제 적용·정산 시점과 공제액은 기관 급여시스템 및 관련 통지자료를 우선 확인하세요.</p></section><section class="quick-search" aria-label="직원 이름으로 검색"><div><label for="personSearch">직원 이름 검색</label><p>이름으로 인사변동 유형과 직원별 완료 현황·특이사항을 확인할 수 있습니다.</p></div><div class="quick-search-controls"><input id="personSearch" type="search" placeholder="직원 이름 입력 (예: 김가람)" autocomplete="off" aria-label="직원 이름 검색"><button id="clearSearch" class="secondary" type="button">검색 초기화</button></div></section><div class="layout"><div><section class="card"><h2>엑셀 일괄 등록</h2><div id="dropZone" class="dropzone" role="button" tabindex="0" aria-label="엑셀 파일 끌어놓기 또는 선택"><strong>엑셀 파일을 여기에 끌어놓으세요</strong><small>클릭해서 선택 가능 · XLSX, CSV</small></div><input type="file" id="excelFile" accept=".xlsx,.csv" hidden><p class="hint">첫 행에 <b>인사변동유형 · 성명 · 적용일</b>을 넣어 주세요. 파일의 첫 번째 시트를 읽습니다.</p><a class="muted-link" id="sampleCsv" href="#">입력 양식(CSV) 다운로드 ↓</a><div id="importSummary" class="import-summary" role="status" aria-live="polite"></div><div id="importErrors" class="import-errors"></div><div class="batch-actions"><button type="button" class="secondary" id="exportCsv">직원별 처리현황 CSV 다운로드</button><button type="button" class="secondary" id="dedupeRecords">중복 명단 정리</button></div><hr class="sectionline"><h2>직접 등록</h2><form id="createForm"><div class="field"><label for="kind">인사변동 유형</label><select id="kind"><option>휴직</option><option>복직</option><option>정기승급</option><option>신규임용</option><option>전입</option><option>퇴직</option></select></div><div class="field"><label for="person">대상자 별칭 <small>(선택)</small></label><input id="person" maxlength="40" placeholder="비워두면 가상직원으로 자동 입력"></div><div class="field"><label for="effective">적용일</label><input id="effective" type="date"></div><details class="advanced"><summary>메모 추가 (선택)</summary><div class="field" style="margin:12px 0 0"><label for="memo">업무 메모</label><textarea id="memo" maxlength="250" placeholder="예: 확인이 필요한 특이사항"></textarea></div></details><button class="primary wide" type="submit">체크리스트 만들기 →</button><p id="createFeedback" role="status" aria-live="polite" style="font-weight:800;color:#226944;margin:12px 0 0"></p></form><div class="notice">⚠️ 이 앱의 항목은 <b>교육용 일반 점검 예시</b>예요. 실제 건강보험·공무원연금·급여 처리는 휴직 사유, 신분, 적용일, 기관 지침 및 최신 규정에 따라 달라집니다. 자동 신고·자동 계산 기능은 없어요.</div></section></div><div><section class="card" id="listCard"><div class="list-heading"><div><h2>인사변동 유형별 확인</h2><p class="hint">유형별 공통 확인사항을 참고하고, 직원 이름을 눌러 직원별 완료·미완료 상태를 선택하고 특이사항을 기록하세요.</p></div><span id="totalPeople" class="badge"></span></div><div class="type-slide-controls"><button type="button" class="secondary" id="typePrev" aria-label="이전 인사변동 유형">← 이전 유형</button><span id="typeSlideStatus" role="status" aria-live="polite">유형 선택</span><button type="button" class="secondary" id="typeNext" aria-label="다음 인사변동 유형">다음 유형 →</button></div><div id="history" class="type-list" aria-live="polite" tabindex="0" aria-label="인사변동 유형별 가로 슬라이드"></div><div class="toolbar"><button type="button" id="backup" class="secondary">백업하기</button><button type="button" id="restore" class="secondary">불러오기</button></div><input id="file" type="file" accept=".json,application/json" hidden><p class="hint">브라우저에 저장하지만 실행 환경에 따라 저장이 차단될 수 있어요. 다른 기기와 동기화되지 않으므로 중요한 내용은 백업하세요.</p><div id="storageNotice" class="notice" hidden>현재 브라우저에서 자동 저장을 사용할 수 없어요. 화면을 닫기 전에 JSON 백업을 다운로드하세요.</div></section><section class="card" id="detailCard"><div class="case-head"><div><div class="kicker">CHECKLIST</div><h2 id="caseTitle">업무를 선택해 주세요</h2></div><span class="badge" id="caseBadge">예시</span></div><p class="sub" id="caseInfo">왼쪽에서 직원을 등록하거나 오른쪽에서 해당 직원의 확인사항을 펼쳐 주세요.</p><div class="progress"><div class="fill" id="fill"></div></div><div class="stats"><span id="count">0 / 0 완료</span><strong id="percent">0%</strong></div><div id="tasks"><div class="empty">🐾 확인할 업무가 여기 나타나요.</div></div><hr class="sectionline"><h2>확인 항목 추가</h2><form id="addTaskForm" class="addline"><input id="taskInput" maxlength="160" placeholder="예: 해당 월 공제내역 대조" aria-label="확인 항목 입력"><button class="primary" type="submit">추가</button></form><p class="status" id="status" role="status" aria-live="polite"></p><div class="detail">💡 체크리스트는 누락 방지를 위한 보조 도구예요. <b>‘확인’과 ‘처리 의무’는 다릅니다.</b> 항목을 삭제하거나 직접 추가해 기관의 실제 업무 순서에 맞춰 사용할 수 있어요.</div></section></div></div><div class="footer">급여변동사항 누락 방지 도우미 · 확인사항은 기관 지침으로 최종 검토하세요</div></main><script>
+<style id="marine-theme">
+/* 푸른 파도와 윤슬 - 나머지 기능 변경 없이 기존 화면 테마 통일 */
+:root{color:#173a58;background:#e8f5fc;font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+body{color:#173a58;background:radial-gradient(ellipse at 82% 8%,rgba(255,255,255,.87) 0,transparent 26%),radial-gradient(ellipse at 17% 65%,rgba(148,218,246,.42),transparent 41%),linear-gradient(160deg,#c5e6f7 0%,#e9f7ff 30%,#bedeee 66%,#e3f4fb 100%);background-attachment:fixed}
+body::before{content:"";position:fixed;pointer-events:none;inset:0;z-index:0;opacity:.42;background:repeating-radial-gradient(ellipse at 70% 116%,transparent 0 19px,rgba(255,255,255,.45) 20px 22px,transparent 23px 45px),repeating-radial-gradient(ellipse at 13% -37%,transparent 0 23px,rgba(255,255,255,.34) 24px 26px,transparent 27px 50px)}
+body>.shell{position:relative;z-index:1}
+.hero{border-radius:20px;padding:22px 27px!important;box-shadow:0 12px 32px #347c9c25;background:linear-gradient(112deg,rgba(12,88,138,.9),rgba(34,147,193,.74) 63%,rgba(116,209,233,.64)),repeating-radial-gradient(ellipse at 79% 130%,#ffffff22 0 2px,transparent 3px 45px)!important;color:white!important;border:1px solid #ffffff80}
+.hero h1,.hero p,.hero .kicker{color:#fff!important;text-shadow:0 1px 3px #07395655}
+.card{background:rgba(255,255,255,.90)!important;border-color:#c8e4f2!important;box-shadow:0 9px 28px #2b76951b!important;backdrop-filter:blur(12px)}
+.card h2,.list-heading h2{color:#204d70!important}
+.primary{background:#167dac!important;color:white!important}.primary:hover{background:#075a83!important}
+.secondary{background:#f0f9fe!important;border-color:#bcddec!important;color:#216083!important}
+.badge{background:#d9f0fc!important;color:#155f8b!important}
+.kicker{color:#247fa3}
+.dropzone{background:#eefaff;border-color:#68b8d5}
+.task,.person-group .task{background:#f5fbfe;border-color:#dbeef7}
+.person-card{border-color:#cfe5ef;background:#fff}
+.group h3,.person-group h3{color:#236a91}
+.workflow-sidebar{background:linear-gradient(161deg,rgba(225,245,255,.96) 0%,rgba(241,251,255,.98) 49%,rgba(194,230,247,.97) 100%)!important;border-right:1px solid #abd7ec!important;box-shadow:5px 0 25px #257a9d20!important;color:#245e80!important}
+.workflow-sidebar::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.38;background:repeating-radial-gradient(ellipse at 16% -60%,transparent 0 27px,#ffffffcc 29px 30px,transparent 31px 64px)}
+.workflow-sidebar>*{position:relative}
+.sidebar-brand-icon{background:linear-gradient(135deg,#1d7ead,#63c4dc)!important;color:white!important;box-shadow:0 5px 13px #228db04a}
+.sidebar-brand strong{color:#185478!important}.sidebar-brand small{color:#528ba6!important}
+.sidebar-heading{color:#548fae!important}
+.workflow-link{color:#245c7e!important;border-color:transparent!important}
+.workflow-link span{color:#17799d!important}
+.workflow-link:hover,.workflow-link:focus-visible{background:#d4effb!important;color:#135377!important;border-color:#b0d9ef!important}
+.workflow-link.active{background:linear-gradient(95deg,#c2e9fa,#def6ff)!important;color:#104b6d!important;border-color:#91cbe5!important;box-shadow:inset 4px 0 #1596c5!important}
+.sidebar-hint{color:#628da4!important}
+/* 사용자가 요청한 빨간 점선 엑셀 일괄등록 강조만 유지 */
+.import-first{border:3px dashed #d44238!important;background:#fff3e8!important;box-shadow:0 0 0 5px rgba(212,66,56,.07),0 8px 24px rgba(105,51,31,.08)!important}
+.import-first>h2:first-child{color:#9f251d!important}
+.import-first #dropZone{background:#ffe4d1!important;border:2px dashed #d44238!important}
+.import-first #dropZone:hover,.import-first #dropZone:focus-visible,.import-first #dropZone.drag{background:#ffd3b6!important;border-color:#ac201a!important}
+@media(max-width:760px){.workflow-sidebar{border-right:0!important;border-bottom:1px solid #abd7ec!important}.hero{padding:19px 17px!important}}
+</style></head><body><nav class="workflow-sidebar" aria-label="업무 단계별 바로가기">
+  <div class="sidebar-brand"><span class="sidebar-brand-icon">▤</span><span><strong>급여업무 가이드</strong><small>인사변동 확인 도우미</small></span></div>
+  <div class="sidebar-heading">WORKFLOW INDEX</div>
+  <a href="#section-import" class="workflow-link active"><span>01</span> 엑셀 일괄등록</a>
+  <a href="#section-search" class="workflow-link"><span>02</span> 직원 검색</a>
+  <a href="#listCard" class="workflow-link"><span>03</span> 유형별 확인</a>
+  <a href="#section-annual" class="workflow-link"><span>04</span> 정기 변동 주의사항</a>
+  <p class="sidebar-hint">항목을 누르면 해당 위치로 이동합니다.</p>
+</nav><main class="shell"><header class="hero"><div><div class="kicker">인사변동별 확인사항 · 브라우저 내 처리</div><h1>급여변동사항 누락 방지 도우미</h1><p>엑셀을 끌어놓으면 직원별 확인사항을 자동으로 정리합니다.</p></div></header><section id="section-annual" class="annual-alerts" aria-label="연간 공통 급여변동 주의사항"><div class="annual-title">정기 급여변동 주의사항 <span>4월 · 5월</span></div><div class="annual-grid"><div class="annual-item" data-month="4"><strong>4월 · 건강보험료 정산</strong><p>건강보험료 연말정산 결과 및 건강보험·장기요양보험료 급여 공제 반영 여부 확인</p></div><div class="annual-item" data-month="5"><strong>5월 · 공무원연금 기여금</strong><p>기준소득월액 변경에 따른 일반기여금 변동과 해당자 소급기여금 반영 여부 확인</p></div></div><p class="annual-foot">※ 실제 적용·정산 시점과 공제액은 기관 급여시스템 및 관련 통지자료를 우선 확인하세요.</p></section><section id="section-search" class="quick-search" aria-label="직원 이름으로 검색"><div><label for="personSearch">직원 이름 검색</label><p>이름으로 인사변동 유형과 직원별 완료 현황·특이사항을 확인할 수 있습니다.</p></div><div class="quick-search-controls"><input id="personSearch" type="search" placeholder="직원 이름 입력 (예: 김가람)" autocomplete="off" aria-label="직원 이름 검색"><button id="clearSearch" class="secondary" type="button">검색 초기화</button></div></section><div class="layout"><div><section id="section-import" class="card import-first"><h2>엑셀 일괄 등록</h2><div id="dropZone" class="dropzone" role="button" tabindex="0" aria-label="엑셀 파일 끌어놓기 또는 선택"><strong>엑셀 파일을 여기에 끌어놓으세요</strong><small>클릭해서 선택 가능 · XLSX, CSV</small></div><input type="file" id="excelFile" accept=".xlsx,.csv" hidden><p class="hint">첫 행에 <b>인사변동유형 · 성명 · 적용일</b>을 넣어 주세요. 파일의 첫 번째 시트를 읽습니다.</p><a class="muted-link" id="sampleCsv" href="#">입력 양식(CSV) 다운로드 ↓</a><div id="importSummary" class="import-summary" role="status" aria-live="polite"></div><div id="importErrors" class="import-errors"></div><div class="batch-actions"><button type="button" class="secondary" id="exportCsv">직원별 처리현황 CSV 다운로드</button><button type="button" class="secondary" id="dedupeRecords">중복 명단 정리</button></div><hr class="sectionline"><h2>직접 등록</h2><form id="createForm"><div class="field"><label for="kind">인사변동 유형</label><select id="kind"><option>휴직</option><option>복직</option><option>정기승급</option><option>신규임용</option><option>전입</option><option>퇴직</option></select></div><div class="field"><label for="person">대상자 별칭 <small>(선택)</small></label><input id="person" maxlength="40" placeholder="비워두면 가상직원으로 자동 입력"></div><div class="field"><label for="effective">적용일</label><input id="effective" type="date"></div><details class="advanced"><summary>메모 추가 (선택)</summary><div class="field" style="margin:12px 0 0"><label for="memo">업무 메모</label><textarea id="memo" maxlength="250" placeholder="예: 확인이 필요한 특이사항"></textarea></div></details><button class="primary wide" type="submit">체크리스트 만들기 →</button><p id="createFeedback" role="status" aria-live="polite" style="font-weight:800;color:#226944;margin:12px 0 0"></p></form><div class="notice">⚠️ 이 앱의 항목은 <b>교육용 일반 점검 예시</b>예요. 실제 건강보험·공무원연금·급여 처리는 휴직 사유, 신분, 적용일, 기관 지침 및 최신 규정에 따라 달라집니다. 자동 신고·자동 계산 기능은 없어요.</div></section></div><div><section class="card" id="listCard"><div class="list-heading"><div><h2>인사변동 유형별 확인</h2><p class="hint">유형별 공통 확인사항을 참고하고, 직원 이름을 눌러 직원별 완료·미완료 상태를 선택하고 특이사항을 기록하세요.</p></div><span id="totalPeople" class="badge"></span></div><div class="type-slide-controls"><button type="button" class="secondary" id="typePrev" aria-label="이전 인사변동 유형">← 이전 유형</button><span id="typeSlideStatus" role="status" aria-live="polite">유형 선택</span><button type="button" class="secondary" id="typeNext" aria-label="다음 인사변동 유형">다음 유형 →</button></div><div id="history" class="type-list" aria-live="polite" tabindex="0" aria-label="인사변동 유형별 가로 슬라이드"></div><div class="toolbar"><button type="button" id="backup" class="secondary">백업하기</button><button type="button" id="restore" class="secondary">불러오기</button></div><input id="file" type="file" accept=".json,application/json" hidden><p class="hint">브라우저에 저장하지만 실행 환경에 따라 저장이 차단될 수 있어요. 다른 기기와 동기화되지 않으므로 중요한 내용은 백업하세요.</p><div id="storageNotice" class="notice" hidden>현재 브라우저에서 자동 저장을 사용할 수 없어요. 화면을 닫기 전에 JSON 백업을 다운로드하세요.</div></section><section class="card" id="detailCard"><div class="case-head"><div><div class="kicker">CHECKLIST</div><h2 id="caseTitle">업무를 선택해 주세요</h2></div><span class="badge" id="caseBadge">예시</span></div><p class="sub" id="caseInfo">왼쪽에서 직원을 등록하거나 오른쪽에서 해당 직원의 확인사항을 펼쳐 주세요.</p><div class="progress"><div class="fill" id="fill"></div></div><div class="stats"><span id="count">0 / 0 완료</span><strong id="percent">0%</strong></div><div id="tasks"><div class="empty">🐾 확인할 업무가 여기 나타나요.</div></div><hr class="sectionline"><h2>확인 항목 추가</h2><form id="addTaskForm" class="addline"><input id="taskInput" maxlength="160" placeholder="예: 해당 월 공제내역 대조" aria-label="확인 항목 입력"><button class="primary" type="submit">추가</button></form><p class="status" id="status" role="status" aria-live="polite"></p><div class="detail">💡 체크리스트는 누락 방지를 위한 보조 도구예요. <b>‘확인’과 ‘처리 의무’는 다릅니다.</b> 항목을 삭제하거나 직접 추가해 기관의 실제 업무 순서에 맞춰 사용할 수 있어요.</div></section></div></div><div class="footer">급여변동사항 누락 방지 도우미 · 확인사항은 기관 지침으로 최종 검토하세요</div></main><script>
 window.addEventListener("error",function(e){var x=document.getElementById("status");if(x)x.textContent="실행 오류: "+e.message;});
 (()=>{'use strict';const $=id=>document.getElementById(id);const STORAGE='moa-payroll-helper-v1';const RULES={
 '휴직':{'인사·급여':['휴직 종류·시작일·종료예정일 및 발령 확인','휴직 기간의 봉급·수당 지급 여부와 일할 계산 확인'],'건강보험':['건강보험료 납입고지 유예 대상 및 신청 필요 여부 확인','휴직 기간 보험료 경감·정산 적용 여부 확인'],'공무원연금':['휴직 기간 기여금 납부 방식 및 유예·소급 납부 여부 확인']},
@@ -701,4 +771,25 @@ async function importExcel(f){const info=$('importSummary'),errors=$('importErro
   for(const candidate of made){const key=identityKey(candidate);if(existing.has(key)){duplicated++;continue}existing.add(key);additions.push(candidate)}
   if(records.length+additions.length>300){info.textContent='최대 300명까지 저장할 수 있습니다. 중복을 정리하거나 기존 기록을 삭제해 주세요.';return}if(additions.length){records.unshift(...additions);active=additions[0].id;save();render()}
   info.textContent=`✓ 신규 ${additions.length}명 등록 · 중복 ${duplicated}명 건너뜀 · 오류 ${err.length}건\n${additions.length?'아래에서 직원별로 확인하세요.':'기존 체크리스트는 그대로 유지했어요.'}`;errors.textContent=err.slice(0,60).join('\n')+(err.length>60?'\n외 추가 오류 있음':'');}catch(e){info.textContent='파일을 읽지 못했습니다: '+e.message}}
-})();</script><script>document.querySelectorAll('.annual-item').forEach(el=>{if(Number(el.dataset.month)===(new Date()).getMonth()+1)el.classList.add('current-month')});</script></body></html>
+})();</script><script>document.querySelectorAll('.annual-item').forEach(el=>{if(Number(el.dataset.month)===(new Date()).getMonth()+1)el.classList.add('current-month')});</script>
+<script>
+/* 내비게이션 상태 표시만 관리하며 기존 급여 체크리스트 동작은 수정하지 않음 */
+(function(){
+  const links=[...document.querySelectorAll('.workflow-link')];
+  if(!links.length) return;
+  links.forEach(link=>link.addEventListener('click',function(){
+    links.forEach(x=>x.classList.toggle('active',x===link));
+  }));
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(entries=>{
+      const active=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(active){
+        const id='#'+active.target.id;
+        links.forEach(x=>x.classList.toggle('active',x.getAttribute('href')===id));
+      }
+    },{rootMargin:'-5% 0px -65% 0px',threshold:0});
+    links.forEach(link=>{const el=document.querySelector(link.getAttribute('href'));if(el)obs.observe(el)});
+  }
+})();
+</script>
+</body></html>
